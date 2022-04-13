@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+ nginx:
+  image: nginx:1.21.4-alpine
+  container_name: nginx
+  hostname: pics.io
+  restart: always
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro
+   - /etc/letsencrypt:/etc/letsencrypt:ro
+   - /var/log/nginx:/var/log/nginx:rw
+   - /root/oab-mentoring-bot-nginx/configs/nginx.conf:/etc/nginx/nginx.conf:ro
+   - /root/oab-mentoring-bot-nginx/configs/home/ubuntu/projects/nginx/configs/instances/pics.io:ro
+  network_mode: "host"
